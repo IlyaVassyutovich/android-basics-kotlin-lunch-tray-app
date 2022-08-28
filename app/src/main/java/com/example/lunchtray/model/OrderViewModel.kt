@@ -15,6 +15,7 @@
  */
 package com.example.lunchtray.model
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -69,14 +70,11 @@ class OrderViewModel : ViewModel() {
      * Set the entree for the order.
      */
     fun setEntree(entree: String) {
-        // TODO: if _entree.value is not null, set the previous entree price to the current
-        //  entree price.
+        _entree.value = menuItems[entree]
 
-        // TODO: if _subtotal.value is not null subtract the previous entree price from the current
-        //  subtotal value. This ensures that we only charge for the currently selected entree.
+        updateSubtotal()
 
-        // TODO: set the current entree value to the menu item corresponding to the passed in string
-        // TODO: update the subtotal to reflect the price of the selected entree.
+        Log.d("OrderVM", "Order: entree - ${_entree.value?.name}")
     }
 
     /**
@@ -111,12 +109,18 @@ class OrderViewModel : ViewModel() {
     /**
      * Update subtotal value.
      */
-    private fun updateSubtotal(itemPrice: Double) {
+    private fun updateSubtotal() {
         // TODO: if _subtotal.value is not null, update it to reflect the price of the recently
         //  added item.
         //  Otherwise, set _subtotal.value to equal the price of the item.
 
         // TODO: calculate the tax and resulting total
+
+        var subtotal = 0.0
+
+        _entree.value?.apply { subtotal += this.price }
+
+        _subtotal.value = subtotal
     }
 
     /**
