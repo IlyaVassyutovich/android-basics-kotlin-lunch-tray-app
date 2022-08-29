@@ -72,7 +72,7 @@ class OrderViewModel : ViewModel() {
     fun setEntree(entree: String) {
         _entree.value = menuItems[entree]
 
-        updateSubtotal()
+        onOrderContentsChange()
 
         Log.d("OrderVM", "Order: entree - ${_entree.value?.name}")
     }
@@ -83,7 +83,7 @@ class OrderViewModel : ViewModel() {
     fun setSide(side: String) {
         _side.value = menuItems[side]
 
-        updateSubtotal()
+        onOrderContentsChange()
 
         Log.d("OrderVM", "Order: side - ${_side.value?.name}")
     }
@@ -94,7 +94,7 @@ class OrderViewModel : ViewModel() {
     fun setAccompaniment(accompaniment: String) {
         _accompaniment.value = menuItems[accompaniment]
 
-        updateSubtotal()
+        onOrderContentsChange()
 
         Log.d("OrderVM", "Order: accompaniment - ${_accompaniment.value?.name}")
     }
@@ -102,7 +102,7 @@ class OrderViewModel : ViewModel() {
     /**
      * Update subtotal value.
      */
-    private fun updateSubtotal() {
+    private fun onOrderContentsChange() {
         // TODO: if _subtotal.value is not null, update it to reflect the price of the recently
         //  added item.
         //  Otherwise, set _subtotal.value to equal the price of the item.
@@ -116,14 +116,11 @@ class OrderViewModel : ViewModel() {
         _accompaniment.value?.apply { subtotal += this.price }
 
         _subtotal.value = subtotal
-    }
 
-    /**
-     * Calculate tax and update total.
-     */
-    fun calculateTaxAndTotal() {
-        // TODO: set _tax.value based on the subtotal and the tax rate.
-        // TODO: set the total based on the subtotal and _tax.value.
+        val tax = subtotal * taxRate
+        _tax.value = tax
+
+        _total.value = tax + subtotal
     }
 
     /**
