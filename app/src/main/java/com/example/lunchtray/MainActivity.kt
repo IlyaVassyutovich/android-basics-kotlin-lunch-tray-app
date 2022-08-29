@@ -32,7 +32,5 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        // TODO: Retrieve NavController from the NavHostFragment
     }
 }
