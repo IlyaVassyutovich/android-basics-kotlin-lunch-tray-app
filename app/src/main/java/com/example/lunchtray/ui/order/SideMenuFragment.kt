@@ -50,8 +50,7 @@ class SideMenuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSideMenuBinding.inflate(inflater, container, false)
-        val root = binding.root
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
