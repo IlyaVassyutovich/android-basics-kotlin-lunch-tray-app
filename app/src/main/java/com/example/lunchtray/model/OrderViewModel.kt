@@ -92,16 +92,11 @@ class OrderViewModel : ViewModel() {
      * Set the accompaniment for the order.
      */
     fun setAccompaniment(accompaniment: String) {
-        // TODO: if _accompaniment.value is not null, set the previous accompaniment price to the
-        //  current accompaniment price.
+        _accompaniment.value = menuItems[accompaniment]
 
-        // TODO: if _accompaniment.value is not null subtract the previous accompaniment price from
-        //  the current subtotal value. This ensures that we only charge for the currently selected
-        //  accompaniment.
+        updateSubtotal()
 
-        // TODO: set the current accompaniment value to the menu item corresponding to the passed in
-        //  string
-        // TODO: update the subtotal to reflect the price of the selected accompaniment.
+        Log.d("OrderVM", "Order: accompaniment - ${_accompaniment.value?.name}")
     }
 
     /**
@@ -118,6 +113,7 @@ class OrderViewModel : ViewModel() {
 
         _entree.value?.apply { subtotal += this.price }
         _side.value?.apply { subtotal += this.price }
+        _accompaniment.value?.apply { subtotal += this.price }
 
         _subtotal.value = subtotal
     }

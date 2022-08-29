@@ -57,7 +57,7 @@ class AccompanimentMenuFragment : Fragment() {
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = sharedViewModel
-            // TODO: initialize the AccompanimentMenuFragment variables
+            fragment = this@AccompanimentMenuFragment
         }
     }
 
@@ -74,6 +74,10 @@ class AccompanimentMenuFragment : Fragment() {
     fun cancelOrder() {
         // TODO: Reset order in view model
         // TODO: Navigate back to the [StartFragment] to start over
+    }
+
+    fun selectAccompaniment(accompaniment: String) {
+        sharedViewModel.setAccompaniment(accompaniment)
     }
 
     /**
