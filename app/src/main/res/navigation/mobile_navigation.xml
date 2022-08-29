@@ -43,5 +43,14 @@
         android:id="@+id/sideMenuFragment"
         android:name="com.example.lunchtray.ui.order.SideMenuFragment"
         android:label="fragment_side_menu"
-        tools:layout="@layout/fragment_side_menu" />
+        tools:layout="@layout/fragment_side_menu" >
+        <action
+            android:id="@+id/action_sideMenuFragment_to_accompanimentMenuFragment"
+            app:destination="@id/accompanimentMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accompanimentMenuFragment"
+        android:name="com.example.lunchtray.ui.order.AccompanimentMenuFragment"
+        android:label="fragment_accompaniment_menu"
+        tools:layout="@layout/fragment_accompaniment_menu" />
 </navigation>
