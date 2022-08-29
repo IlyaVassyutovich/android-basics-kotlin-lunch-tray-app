@@ -46,7 +46,7 @@ class SideMenuFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSideMenuBinding.inflate(inflater, container, false)
         val root = binding.root
         return root
@@ -57,7 +57,7 @@ class SideMenuFragment : Fragment() {
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = sharedViewModel
-            // TODO: initialize the SideMenuFragment variables
+            fragment = this@SideMenuFragment
         }
     }
 
@@ -74,6 +74,10 @@ class SideMenuFragment : Fragment() {
     fun cancelOrder() {
         // TODO: Reset order in view model
         // TODO: Navigate back to the [StartFragment] to start over
+    }
+
+    fun selectSide(newSide: String) {
+        sharedViewModel.setSide(newSide)
     }
 
     /**
