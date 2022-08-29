@@ -113,17 +113,17 @@
             <TextView
                 android:id="@+id/tax"
                 style="@style/Widget.LunchTray.TextView.Subtotal"
-                android:text="@{@string/tax(viewModel.tax)}"
                 android:layout_marginTop="0dp"
+                android:text="@{@string/tax(viewModel.tax)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/subtotal"
                 tools:text="Tax: $0.73" />
 
             <TextView
                 android:id="@+id/total"
-                android:text="@{@string/total(viewModel.total)}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{@string/total(viewModel.total)}"
                 android:textAllCaps="true"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -135,19 +135,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/side_margin"
-                android:text="@string/submit"
                 android:onClick="@{() -> fragment.submitOrder()}"
+                android:text="@string/submit"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/total" />
 
-            <!-- TODO: cancel the order when clicked -->
             <Button
                 android:id="@+id/cancel_button"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/base_margin"
+                android:onClick="@{() -> fragment.cancelOrder()}"
                 android:text="@string/cancel"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
